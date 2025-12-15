@@ -1,0 +1,14 @@
+C:\Projetos_DOT_NET\sonar-demo\MinhaAppCli\bin\Debug\net8.0\MinhaAppCli.exe
+C:\Projetos_DOT_NET\sonar-demo\MinhaAppCli\bin\Debug\net8.0\MinhaAppCli.deps.json
+C:\Projetos_DOT_NET\sonar-demo\MinhaAppCli\bin\Debug\net8.0\MinhaAppCli.runtimeconfig.json
+C:\Projetos_DOT_NET\sonar-demo\MinhaAppCli\bin\Debug\net8.0\MinhaAppCli.dll
+C:\Projetos_DOT_NET\sonar-demo\MinhaAppCli\bin\Debug\net8.0\MinhaAppCli.pdb
+C:\Projetos_DOT_NET\sonar-demo\MinhaAppCli\obj\Debug\net8.0\MinhaAppCli.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projetos_DOT_NET\sonar-demo\MinhaAppCli\obj\Debug\net8.0\MinhaAppCli.AssemblyInfoInputs.cache
+C:\Projetos_DOT_NET\sonar-demo\MinhaAppCli\obj\Debug\net8.0\MinhaAppCli.AssemblyInfo.cs
+C:\Projetos_DOT_NET\sonar-demo\MinhaAppCli\obj\Debug\net8.0\MinhaAppCli.csproj.CoreCompileInputs.cache
+C:\Projetos_DOT_NET\sonar-demo\MinhaAppCli\obj\Debug\net8.0\MinhaAppCli.dll
+C:\Projetos_DOT_NET\sonar-demo\MinhaAppCli\obj\Debug\net8.0\refint\MinhaAppCli.dll
+C:\Projetos_DOT_NET\sonar-demo\MinhaAppCli\obj\Debug\net8.0\MinhaAppCli.pdb
+C:\Projetos_DOT_NET\sonar-demo\MinhaAppCli\obj\Debug\net8.0\MinhaAppCli.genruntimeconfig.cache
+C:\Projetos_DOT_NET\sonar-demo\MinhaAppCli\obj\Debug\net8.0\ref\MinhaAppCli.dll
