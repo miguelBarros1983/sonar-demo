@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         SONAR_TOKEN = credentials('SONARQUBE_TOKEN')
+        DOTNET_TOOLS = "/var/jenkins_home/.dotnet/tools"
     }
 
     stages {
@@ -17,9 +18,8 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     sh """
-                        dotnet tool install --global dotnet-sonarscanner || true
-                        export PATH="\$PATH:/root/.dotnet/tools"
-                        dotnet sonarscanner begin \
+                        export PATH="\$PATH:$DOTNET_TOOLS"
+                        dotnet-sonarscanner begin \
                             /k:"demo-app" \
                             /d:sonar.host.url="http://sonarqube:9000" \
                             /d:sonar.token="$SONAR_TOKEN" \
@@ -45,8 +45,8 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     sh """
-                        export PATH="\$PATH:/root/.dotnet/tools"
-                        dotnet sonarscanner end /d:sonar.token="$SONAR_TOKEN"
+                        export PATH="\$PATH:$DOTNET_TOOLS"
+                        dotnet-sonarscanner end /d:sonar.token="$SONAR_TOKEN"
                     """
                 }
             }
