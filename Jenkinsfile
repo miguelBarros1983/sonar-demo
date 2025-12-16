@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/<teu-user>/sonar-demo.git'
+                git branch: 'main', url: 'https://github.com/miguelBarros1983/sonar-demo.git'
             }
         }
 
