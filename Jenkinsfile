@@ -1,65 +1,74 @@
 pipeline {
     agent any
 
+    options {
+        timestamps()
+    }
+
     environment {
         SONAR_TOKEN = credentials('SONARQUBE_TOKEN')
-        DOTNET_TOOLS = "/var/jenkins_home/.dotnet/tools"
     }
 
     stages {
 
-        stage('Checkout') {
+        stage('Checkout Source Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/miguelBarros1983/sonar-demo.git'
+                retry(3) {
+                    git branch: 'main', url: 'https://github.com/miguelBarros1983/sonar-demo.git'
+                }
             }
         }
 
-        stage('Prepare SonarQube') {
+        stage('SonarQube Begin') {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     sh """
-                        export PATH="\$PATH:$DOTNET_TOOLS"
-                        dotnet-sonarscanner begin \
+                        dotnet sonarscanner begin \
                             /k:"demo-app" \
                             /d:sonar.host.url="http://sonarqube:9000" \
-                            /d:sonar.token="$SONAR_TOKEN" \
-                            /d:sonar.exclusions="**/.vs/**,**/bin/**,**/obj/**"
+                            /d:sonar.token="$SONAR_TOKEN"
                     """
                 }
             }
         }
 
-        stage('Restore') {
+        stage('Restore Dependencies') {
             steps {
                 sh 'dotnet restore MinhaAppCli/MinhaAppCli.csproj'
             }
         }
 
-        stage('Build') {
+        stage('Compile Application') {
             steps {
                 sh 'dotnet build MinhaAppCli/MinhaAppCli.csproj --no-restore'
             }
         }
 
-        stage('SonarQube End') {
+        stage('SonarQube Finalize') {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     sh """
-                        export PATH="\$PATH:$DOTNET_TOOLS"
-                        dotnet-sonarscanner end /d:sonar.token="$SONAR_TOKEN"
+                        dotnet sonarscanner end /d:sonar.token="$SONAR_TOKEN"
                     """
                 }
             }
         }
 
-        stage('Quality Gate') {
+        stage('Quality Gate Validation') {
             steps {
                 timeout(time: 10, unit: 'MINUTES') {
-                    // Delay necessário para o CE terminar e a API atualizar o estado
-                    sleep(time: 5, unit: 'SECONDS')
                     waitForQualityGate abortPipeline: true
                 }
             }
+        }
+    }
+
+    post {
+        success {
+            echo "✅ Pipeline concluído com sucesso"
+        }
+        failure {
+            echo "❌ Pipeline falhou"
         }
     }
 }
