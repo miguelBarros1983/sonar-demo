@@ -55,6 +55,8 @@ pipeline {
         stage('Quality Gate') {
             steps {
                 timeout(time: 10, unit: 'MINUTES') {
+                    // Delay necessário para o CE terminar e a API atualizar o estado
+                    sleep(time: 5, unit: 'SECONDS')
                     waitForQualityGate abortPipeline: true
                 }
             }
