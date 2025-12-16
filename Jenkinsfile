@@ -6,9 +6,26 @@ pipeline {
     }
 
     stages {
+
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/miguelBarros1983/sonar-demo.git'
+            }
+        }
+
+        stage('Prepare SonarQube') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh """
+                        dotnet tool install --global dotnet-sonarscanner || true
+                        export PATH="\$PATH:/root/.dotnet/tools"
+                        dotnet sonarscanner begin \
+                            /k:"demo-app" \
+                            /d:sonar.host.url="http://sonarqube:9000" \
+                            /d:sonar.token="$SONAR_TOKEN" \
+                            /d:sonar.exclusions="**/.vs/**,**/bin/**,**/obj/**"
+                    """
+                }
             }
         }
 
@@ -24,15 +41,12 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
+        stage('SonarQube End') {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     sh """
-                        sonar-scanner \
-                        -Dsonar.projectKey=demo-app \
-                        -Dsonar.sources=MinhaAppCli \
-                        -Dsonar.host.url=http://sonarqube:9000 \
-                        -Dsonar.login=$SONAR_TOKEN
+                        export PATH="\$PATH:/root/.dotnet/tools"
+                        dotnet sonarscanner end /d:sonar.token="$SONAR_TOKEN"
                     """
                 }
             }
@@ -40,7 +54,7 @@ pipeline {
 
         stage('Quality Gate') {
             steps {
-                timeout(time: 2, unit: 'MINUTES') {
+                timeout(time: 10, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
                 }
             }
