@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    options {
-        timestamps()
-    }
-
     environment {
         SONAR_TOKEN = credentials('SONARQUBE_TOKEN')
     }
