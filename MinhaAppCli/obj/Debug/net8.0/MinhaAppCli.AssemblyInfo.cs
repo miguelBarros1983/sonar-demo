@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MinhaAppCli")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f17d704a831b580504baaca7cab637e321a37a8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b5d0b5607ca9bb502d4b555bd6c493fceddc253c")]
 [assembly: System.Reflection.AssemblyProductAttribute("MinhaAppCli")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MinhaAppCli")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

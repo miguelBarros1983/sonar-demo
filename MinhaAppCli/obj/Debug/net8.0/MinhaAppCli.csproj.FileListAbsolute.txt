@@ -12,3 +12,4 @@ C:\Projetos_DOT_NET\sonar-demo\MinhaAppCli\obj\Debug\net8.0\refint\MinhaAppCli.d
 C:\Projetos_DOT_NET\sonar-demo\MinhaAppCli\obj\Debug\net8.0\MinhaAppCli.pdb
 C:\Projetos_DOT_NET\sonar-demo\MinhaAppCli\obj\Debug\net8.0\MinhaAppCli.genruntimeconfig.cache
 C:\Projetos_DOT_NET\sonar-demo\MinhaAppCli\obj\Debug\net8.0\ref\MinhaAppCli.dll
+C:\Projetos_DOT_NET\sonar-demo\MinhaAppCli\obj\Debug\net8.0\MinhaAppCli.sourcelink.json

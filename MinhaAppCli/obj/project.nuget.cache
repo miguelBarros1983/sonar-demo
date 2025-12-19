@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "54bgHGiQSkI=",
+  "dgSpecHash": "e/CV2Fz5vsg=",
   "success": true,
   "projectFilePath": "C:\\Projetos_DOT_NET\\sonar-demo\\MinhaAppCli\\MinhaAppCli.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\pt2354\\.nuget\\packages\\sonaranalyzer.csharp\\10.17.0.131074\\sonaranalyzer.csharp.10.17.0.131074.nupkg.sha512"
+  ],
   "logs": []
 }
